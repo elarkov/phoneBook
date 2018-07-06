@@ -7,20 +7,16 @@
 	<body>
 
 		<div class="wrapper">
-			<header>
-				<ul class="menu">
-					<li class="menu__item">Add column</li>
-					<li class="menu__item">Add row</li>
-					<li class="menu__item">Delete row</li>
-					<li class="menu__item">Delete column</li>
-					<li class="menu__item">History</li>
-					<li class="menu__item">New table</li>
-
-				</ul>
+			<header class="header">
+				<h1 class="header__title">Книга контактов</h1>
 			</header>
-
-			{{> "./src/templates/content.hbs"}}
-
+			<div class="search">
+				<input class="search__filter" type="text" placeholder="Поиск контактов">
+			</div>
+			<div class="button">Загрузить</div>
+			<ul class="content">
+				{{> "./src/templates/content.hbs"}}
+			</ul>
 		</div>
 
 	</body>
