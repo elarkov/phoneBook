@@ -39,7 +39,7 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin('./css/styles.css'),
     new HtmlPlugin({
-      title: 'tableEditor',
+      title: 'phoneBook',
       template: 'index.hbs',
       filename: 'index.html',
       chunks: ['index'],
