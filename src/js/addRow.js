@@ -1,4 +1,5 @@
-// import render from '../templates/content.hbs';
+export let ul;
+
 function func() {
   const result = document.querySelector('.content');
 
@@ -19,17 +20,20 @@ function func() {
       }
     });
   });
-  const ul = document.querySelector('.list');
+
+  ul = document.querySelector('.list');
   function createContactsDOM(user) {
     const li = document.createElement('li');
     const img = document.createElement('img');
     const divHistory = document.createElement('div');
     const buttonHistory = document.createElement('button');
+
     buttonHistory.className = 'button';
     buttonHistory.textContent = 'Посмотреть историю аккаунта';
     divHistory.className = 'history';
 
     img.src = `${user.avatar}`;
+
     li.className = 'list__item';
     li.innerHTML = `<p><strong>Имя:</strong> ${user.name}</p>`;
     li.innerHTML += `<p><strong>Никнейм:</strong> ${user.username}</p>`;
@@ -89,12 +93,12 @@ function func() {
     const target = e.target;
     if (target != ul) {
       if (target.className === 'edit-cancel') {
-        finishTdEdit(editingLi.elem, false);
+        finishLiEdit(editingLi.elem, false);
         return;
       }
 
       if (target.className === 'edit-ok') {
-        finishTdEdit(editingLi.elem, true);
+        finishLiEdit(editingLi.elem, true);
         return;
       }
 
@@ -114,7 +118,7 @@ function func() {
       data: p.innerHTML,
     };
 
-    p.classList.add('edit-td');
+    p.classList.add('edit-li');
 
     const textArea = document.createElement('textarea');
     textArea.style.width = `${p.clientWidth}px`;
@@ -127,16 +131,16 @@ function func() {
     textArea.focus();
 
     p.insertAdjacentHTML('beforeEnd',
-      '<div class="edit-controls"><button class="edit-ok">OK</button><button class="edit-cancel">CANCEL</button></div>');
+      '<div class="edit-controls"><button class="edit-ok">Oк</button><button class="edit-cancel">Отменить</button></div>');
   }
 
-  function finishTdEdit(p, isOk) {
+  function finishLiEdit(p, isOk) {
     if (isOk) {
       p.innerHTML = p.firstChild.value;
     } else {
       p.innerHTML = editingLi.data;
     }
-    p.classList.remove('edit-td');
+    p.classList.remove('edit-li');
     editingLi = null;
   }
 }
