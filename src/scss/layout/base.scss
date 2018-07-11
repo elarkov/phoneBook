@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,500&subset=cyrillic');
+@import 'mixins.scss';
 @import '../config/variables.scss';
+
 
 html, body {
   width: 100%;
@@ -69,6 +71,10 @@ p {
     outline: 0;
   }
 
+  @include mobile {
+    font-size: 25px;
+  }
+
 }
 
 .wrapper {
@@ -100,12 +106,13 @@ header {
   &:focus {
     outline: none;
   }
+
+  @include mobile {
+    font-size: 30px;
+  }
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   width: 100%;
 }
 
@@ -120,6 +127,12 @@ header {
   padding: 25px;
   font-weight: 300;
   text-align: justify;
+
+
+  @include mobile {
+    width: 100%;
+    font-size: 40px;
+  }
 }
 
 .history {
@@ -151,4 +164,8 @@ header {
 
 .hidden {
   display: none;
+}
+
+.btn__save {
+  margin: 10px 0 10px 0;
 }

@@ -1,6 +1,6 @@
 export let ul;
 
-function func() {
+function ajaxFunc() {
   const result = document.querySelector('.content');
 
   /* === retrieve data from server and build the contact list from JSON file === */
@@ -162,5 +162,5 @@ function func() {
 }
 
 export {
-  func,
+  ajaxFunc,
 };

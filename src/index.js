@@ -4,12 +4,11 @@ import './scss/layout/base.scss';
 
 
 /*= == modules === */
-import { func } from './js/addRow';
+import { ajaxFunc } from './js/ajaxFunc';
 import { search } from './js/search';
+import { save } from './js/saveContacts';
 
 
-/*= == display of contacts === */
-
-
-func();
+ajaxFunc();
 search();
+save();

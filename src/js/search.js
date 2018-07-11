@@ -1,4 +1,4 @@
-import { ul } from './addRow';
+import { ul } from './ajaxFunc';
 
 function search() {
   const input = document.querySelector('.search__filter');
