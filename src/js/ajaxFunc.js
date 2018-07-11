@@ -3,6 +3,8 @@ export let ul;
 function func() {
   const result = document.querySelector('.content');
 
+  /* === retrieve data from server and build the contact list from JSON file === */
+
   window.addEventListener('load', () => {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://demo.sibers.com/users');
@@ -21,6 +23,9 @@ function func() {
     });
   });
 
+
+  /* === create dinamic li list contacts === */
+
   ul = document.querySelector('.list');
   function createContactsDOM(user) {
     const li = document.createElement('li');
@@ -35,6 +40,7 @@ function func() {
     img.src = `${user.avatar}`;
 
     li.className = 'list__item';
+    li.id = `${user.id}`;
     li.innerHTML = `<p><strong>Имя:</strong> ${user.name}</p>`;
     li.innerHTML += `<p><strong>Никнейм:</strong> ${user.username}</p>`;
     li.innerHTML += `<p><strong>Email:</strong> ${user.email}</p>`;
@@ -79,6 +85,9 @@ function func() {
     li.appendChild(divHistory);
     ul.appendChild(li);
 
+
+    /* === event click btn history === */
+
     buttonHistory.addEventListener('click', () => {
       divHistory.classList.toggle('show');
     });
@@ -88,6 +97,8 @@ function func() {
 
 
   let editingLi;
+
+  /*= == event click on ul === */
 
   ul.onclick = function (e) {
     const target = e.target;
@@ -103,7 +114,7 @@ function func() {
       }
 
       if (target.nodeName === 'LI') {
-        if (editingLi) return; // already editing
+        if (editingLi) return;
 
         makeEditLi(target);
         return;
@@ -111,6 +122,8 @@ function func() {
       target = target.parentNode;
     }
   };
+
+  /* === make edit our li list === */
 
   function makeEditLi(p) {
     editingLi = {
@@ -133,6 +146,9 @@ function func() {
     p.insertAdjacentHTML('beforeEnd',
       '<div class="edit-controls"><button class="edit-ok">Oк</button><button class="edit-cancel">Отменить</button></div>');
   }
+
+
+  /* === finish edit our li list === */
 
   function finishLiEdit(p, isOk) {
     if (isOk) {
